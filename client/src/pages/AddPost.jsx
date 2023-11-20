@@ -27,6 +27,7 @@ const AddPost = () => {
     formData.append('title', title);
     formData.append('desc', desc);
     formData.append('author_id', currentUser.user_id);
+    formData.append('author_name', currentUser.username);
     formData.append('file', file);
     formData.append('category', category);
     formData.append('date', date);

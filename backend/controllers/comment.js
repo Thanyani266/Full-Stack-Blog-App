@@ -1,7 +1,7 @@
 const db = require('../db')
 
 const getComments = (req, res) => {
-    const q = "SELECT c.*, p.post_id FROM comments c JOIN posts p ON c.content_id=p.post_id WHERE content_id = ?"
+    const q = "SELECT * FROM comments WHERE content_id = ?"
 
     db.query(q, [req.params.id], (err, data) => {
         if(err) return res.status(500).send(err)

@@ -18,7 +18,7 @@ const Navbar = () => {
   const {currentUser, logout} = useContext(AuthContext)
 
   return (
-    <MDBNavbar expand='lg' light bgColor='light'>
+    <MDBNavbar expand='lg' light bgColor='light' className='nav-bar'>
       <MDBContainer fluid>
         <Link to='/'><MDBTypography tag='p' className='fw-bold fs-4 mt-3 mx-2'>Mutsi</MDBTypography></Link>
 
@@ -36,33 +36,27 @@ const Navbar = () => {
             
             <MDBTypography tag='ul' className='d-flex'>
         <MDBTypography tag='li' className='mx-2'>
-            <NavLink to='/' className='text-dark  text-uppercase'>Home</NavLink>
+            <NavLink to='/' className='text-dark text-uppercase p-1'>Home</NavLink>
         </MDBTypography>
             <MDBTypography tag='li' className='mx-3'>
-            {currentUser ? <NavLink to='/add' className='text-dark text-uppercase'>New Post</NavLink> : ""}
+            {currentUser ? <NavLink to='/add' className='text-dark text-uppercase p-1'>New Post</NavLink> : ""}
             </MDBTypography>
         </MDBTypography>
 
       <div className="d-flex align-items-center ms-auto">
-        {currentUser ? <MDBTypography tag='li' onClick={logout} className='text-dark text-uppercase mx-2' style={{cursor: 'pointer'}}>
+      {currentUser ? <>
+          <MDBIcon fas icon="user" className='me-2'/>
+          <MDBTypography tag='li' className='navbar-text align-items-center me-4'>{currentUser.username}</MDBTypography>
+          </> : "" }
+        {currentUser ? <MDBTypography tag='li' onClick={logout} className='text-dark text-uppercase mx-2 p-1' style={{cursor: 'pointer'}}>
               Logout
             </MDBTypography> : 
             <MDBTypography tag='li' onClick={logout} className='mx-2'>
-            <NavLink to='/login' className='text-dark text-uppercase'>Login</NavLink>
+            <NavLink to='/login' className='text-dark text-uppercase p-1'>Login</NavLink>
           </MDBTypography>}
         <MDBTypography tag='li' className='mx-3'>
-            {currentUser ? "" : <NavLink to='/register' className='text-dark text-uppercase'>Register</NavLink>}
+            {currentUser ? "" : <NavLink to='/register' className='text-dark text-uppercase p-1'>Register</NavLink>}
         </MDBTypography>
-        {currentUser ? <>
-          
-          <MDBTypography tag='li' className='navbar-text me-3 align-items-center'>{currentUser.username}</MDBTypography>
-          <a
-          className="btn btn-dark px-3"
-          href="https://github.com/mdbootstrap/mdb-ui-kit"
-          role="button"
-          ><i className="fab fa-github"></i>
-        </a></> : "" }
-          
       </div>
           </MDBNavbarNav>
         </MDBCollapse>

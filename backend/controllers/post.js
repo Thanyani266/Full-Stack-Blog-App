@@ -22,7 +22,7 @@ const getPost = (req, res) => {
 }
 
 const addPost = (req, res) => {
-    const q = "INSERT INTO posts(`title`, `desc`, `image`, `date`, `author_id`, `category`) VALUES(?)"
+    const q = "INSERT INTO posts(`title`, `desc`, `image`, `date`, `author_id`, `author_name`, `category`) VALUES(?)"
 
     const values = [
         req.body.title,
@@ -30,6 +30,7 @@ const addPost = (req, res) => {
         req.file.filename,
         req.body.date,
         req.body.author_id,
+        req.body.author_name,
         req.body.category
     ]
 
